@@ -1,0 +1,128 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--&lt;!&ndash;<img src="https://cdn2.lamag.com/wp-content/uploads/sites/6/2019/11/palm-trees-lean-los-angeles-daniel-schludi-t6JpiIWLLp8-unsplash.jpg" />&ndash;&gt;-->
+<!--&lt;!&ndash;<a href="https://drive.google.com/file/d/1T2rhBt0tAuEa74vggxlD_lEi4uTXBZVz/view">vajuta siia</a>&ndash;&gt;-->
+<!--<h2 id="book">my books</h2>-->
+<!--<br/>-->
+<!--<a href="#book">see my book list</a>-->
+<!--<ul>-->
+<!--    <li>List 1</li>-->
+<!--    <li>List 1</li>-->
+<!--    <li>List 1</li>-->
+<!--    <li>List 1</li>-->
+<!--</ul>-->
+<!--<ol>-->
+<!--    <li>mingi number</li>-->
+<!--    <li>mingi number</li>-->
+<!--    <li>mingi number</li>-->
+<!--    <li>mingi number</li>-->
+<!--</ol>-->
+<!--<dl>-->
+<!--    <dt>term 1</dt>-->
+<!--    <br/>-->
+<!--    <dd>Definition of term</dd>-->
+<!--</dl>-->
+<!--<table width="789px" border="5" align="center" cellpadding="3" cellspacing="2">-->
+<!--    <tr align="center" valign="middle" bgcolor="#ff6347">-->
+<!--        <td height="99" colspan="2">-->
+<!--            <input type="button">-->
+<!--        </td>-->
+<!--        <td height="99" colspan="2">-->
+<!--            <input type="checkbox">-->
+<!--        </td>-->
+<!--        <td height="99" colspan="2">-->
+<!--            <input type="time">-->
+<!--        </td>-->
+<!--    </tr>-->
+<!--</table>-->
+<!--<form>-->
+
+<!--    <input type="submit" name="submit" value="Submit" />-->
+
+<!--    <input type="reset" name="reset" value="Reset" />-->
+
+<!--    <input type="button" name="ok" value="OK" />-->
+
+<!--    <input type="image" name="imagebutton" src="/html/images/logo.png" />-->
+
+<!--    <video src="https://www.youtube.com/watch?v=ia1iuXbEaYQ"></video>-->
+<!--</form>-->
+<!--</body>-->
+<!--</html>-->
+<!--JavaScript-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--document.querySelector("#menu");-->
+<!--document.querySelectorAll("p");-->
+<!--<p id="test">-->
+<!--</p>-->
+
+<button id="test" onclick="alert('Mida?');">
+    run some java script
+</button>
+<button id="testButton2">
+    test2
+</button>
+<button id="testButton3">
+    Test nupp 3
+</button>
+<input id="vajuta"/>
+<button id="vajutasiia">
+    vajuta siia
+</button>
+<button id="nupp5">
+    Vajuta Balance!
+</button>
+<p id="balance"></p>
+
+<script>
+
+let button2 = document.getElementById("testButton2");
+button2.onclick = function(){
+alert("2");
+};
+let button3 = document.getElementById("testButton3");
+let action = function(){
+alert("3");
+};
+button3.addEventListener('click',action);
+
+let replaceable = document.getElementById("vajuta");
+let qwerty = document.getElementById("vajutasiia");
+qwerty.onclick = function(){
+vajutasiia.innerHTML = replaceable.value;
+};
+
+let button5 = document.getElementById("nupp5");
+button5.addEventListener('click', function () {
+fetch('http://localhost:8080/getKonto?konto=EE123', {
+				method: 'GET',
+				cache: 'no-cache',
+				headers: {
+					'Content-Type': 'application/json'
+				}
+				})
+			.then(function(response) {
+				return response.json();
+			})
+			.then(function(jsonData) {
+				document.getElementById("balance").innerHTML = jsonData;
+			})
+			.catch(function(err) {
+			
+			});
+			});
+
+</script>
+</body>
+</html>
