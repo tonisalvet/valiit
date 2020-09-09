@@ -28,20 +28,20 @@ public class BankColtrollerSQL {
     }
 
     @GetMapping("depositMoney")
-    public void depositMoney(@RequestParam String accountNumber, Integer deposit) {
-        service.depositMoney(accountNumber, deposit);
+    public void depositMoney(@RequestParam String accountNumber, Integer amount) {
+        service.depositMoney(accountNumber, amount);
     }
 
     @GetMapping("withdrawMoney")
-    public void withdrawMoney(@RequestParam String accountNumber, Integer withdraw) {
-        service.withdrawMoney(accountNumber, withdraw);
+    public void withdrawMoney(@RequestParam String accountNumber, Integer amount) {
+        service.withdrawMoney(accountNumber, amount);
     }
 
     @GetMapping("transferMoney")
     public void transferMoney(@RequestParam String accountNumber,
-                              @RequestParam Integer transfer,
+                              @RequestParam Integer amount,
                               @RequestParam String accountNumber2) {
-        service.transferMoney(accountNumber, transfer, accountNumber2);
+        service.transferMoney(accountNumber, amount, accountNumber2);
     }
 }
 

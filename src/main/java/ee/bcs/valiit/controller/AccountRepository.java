@@ -27,45 +27,11 @@ public class AccountRepository {
         return jdbcTemplate.queryForObject(sql, paramMap, Integer.class);
     }
 
-    public void withdrawMoney(String accountNumber, Integer withdraw) {
-        String sql = "SELECT balance FROM account WHERE account_nr = :aNr";
-        Map<String, Object> paramMap = new HashMap();
-        paramMap.put("aNr", accountNumber);
-        Integer result = jdbcTemplate.queryForObject(sql, paramMap, Integer.class);
-        if (result >= withdraw) {
-            sql = "UPDATE account SET balance = :blnc WHERE account_nr = :aNr";
-            paramMap = new HashMap();
-            paramMap.put("blnc", result - withdraw);
-            paramMap.put("aNr", accountNumber);
-            jdbcTemplate.update(sql, paramMap);
-        }
-    }
-
     public void updateMoney(String accountNumber, Integer amount){
         String sql = "UPDATE account SET balance = :blnc WHERE account_nr = :aNr";
         Map<String, Object> paramMap = new HashMap();
         paramMap.put("blnc", amount);
         paramMap.put("aNr", accountNumber);
         jdbcTemplate.update(sql, paramMap);
-    }
-
-    public void transferMoney(String accountNumber, Integer transfer, String accountNumber2) {
-        if (result >= transfer) {
-            String sql = "UPDATE account SET balance = :blnc WHERE account_nr = :aNr";
-            HashMap paramMap = new HashMap();
-            paramMap.put("blnc", +result - transfer);
-            paramMap.put("aNr", accountNumber);
-            jdbcTemplate.update(sql, paramMap);
-
-            sql = "SELECT balance FROM account WHERE account_nr = :aNr";
-            paramMap = new HashMap();
-            paramMap.put("aNr", accountNumber2);
-            Integer result2 = jdbcTemplate.queryForObject(sql, paramMap, Integer.class);
-            sql = "UPDATE account SET balance = :blnc WHERE account_nr = :aNr";
-            paramMap = new HashMap();
-            paramMap.put("blnc", result2 + transfer);
-            paramMap.put("aNr", accountNumber2);
-            jdbcTemplate.update(sql, paramMap);
-        }
     }
 }
