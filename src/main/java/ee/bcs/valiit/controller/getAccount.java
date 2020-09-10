@@ -5,18 +5,26 @@ public class getAccount {
     private int jaak;
 
     public String getKontonr() {
+
         return kontonr;
     }
 
     public void setKontonr(String kontonr) {
+
         this.kontonr = kontonr;
     }
 
     public int getJaak() {
+
         return jaak;
     }
 
     public void setJaak(int jaak) {
+
         this.jaak = jaak;
+    }
+
+    public void clientId(int firstname, int lastname) {
+
     }
 }

@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigInteger;
+
 @RestController
 public class BankColtrollerSQL {
 
@@ -18,8 +20,8 @@ public class BankColtrollerSQL {
 
     //loo konto insert
     @GetMapping("createAccount")
-    public void createAccount(@RequestParam String accountNumber, Integer balance) {
-        service.createAccount(accountNumber, balance);
+    public void createAccount(@RequestParam String accountNumber, Integer balance, Integer client_id) {
+        service.createAccount(accountNumber, balance, client_id);
     }
 
     @GetMapping("getAccountBalance")
