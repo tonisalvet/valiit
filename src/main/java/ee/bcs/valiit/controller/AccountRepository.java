@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,12 +15,13 @@ public class AccountRepository {
     @Autowired
     private NamedParameterJdbcTemplate jdbcTemplate;
 
-    public void createAccount(String accountNumber, Integer balance, Integer client_id) {
-        String sql = "INSERT INTO account (account_nr, balance, client_id) VALUES (:aNr, :blnc, :id)";
+    public void createAccount(String accountNumber, Integer balance, Integer client_id, String status) {
+        String sql = "INSERT INTO account (account_nr, balance, client_id, status) VALUES (:aNr, :blnc, :id, :stat)";
         Map<String, Object> paramMap = new HashMap();
         paramMap.put("aNr", accountNumber);
         paramMap.put("blnc", balance);
         paramMap.put("id", client_id);
+        paramMap.put("stat", status);
         jdbcTemplate.update(sql, paramMap);
     }
 
@@ -54,4 +56,18 @@ public class AccountRepository {
         paramMap.put("aNr", accountNumber);
         return jdbcTemplate.queryForObject(sql, paramMap, Integer.class);
     }
+
+    public String getStatus(String accountNumber) {
+        String sql = "SELECT status FROM account WHERE account_nr = :aNr";
+        Map<String, Object> paramMap = new HashMap();
+        paramMap.put("aNr", accountNumber);
+        return jdbcTemplate.queryForObject(sql, paramMap, String.class);
+    }
+
+//    public List<Transaction> getTransactionHistory(Integer accountId) {
+//        String sql = "SELECT id, account_id, amount FROM transactionHistory WHERE account_id = :accountId";
+//        Map<String, Object> paramMap = new HashMap();
+//        paramMap.put("accountId", accountId);
+//        return jdbcTemplate.query(sql, paramMap, new TransactionRowMapper());
+//    }
 }

@@ -20,8 +20,8 @@ public class BankColtrollerSQL {
 
     //loo konto insert
     @GetMapping("createAccount")
-    public void createAccount(@RequestParam String accountNumber, Integer balance, Integer client_id) {
-        service.createAccount(accountNumber, balance, client_id);
+    public void createAccount(@RequestParam String accountNumber, Integer balance, Integer client_id, String status) {
+        service.createAccount(accountNumber, balance, client_id, status);
     }
 
     @GetMapping("getAccountBalance")
@@ -44,6 +44,10 @@ public class BankColtrollerSQL {
                               @RequestParam Integer amount,
                               @RequestParam String accountNumber2) {
         service.transferMoney(accountNumber, amount, accountNumber2);
+    }
+    @GetMapping("getStatus")
+    public String getStatus(@RequestParam String accountNumber) {
+        return service.getStatus(accountNumber);
     }
 }
 

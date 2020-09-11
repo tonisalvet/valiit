@@ -14,7 +14,8 @@ public class BankController2 {
 
     //CreateAccount
     @GetMapping("looKonto")
-    public void addPangakonto(@RequestParam("konto") String accountNr, @RequestParam("jaak") int jaak) {
+    public void addPangakonto(@RequestParam("konto") String accountNr,
+                              @RequestParam("jaak") int jaak) {
         pangakonto.put(accountNr, jaak);
         //http://localhost:8080/looKonto?konto=EE123&jaak=5000
         //http://localhost:8080/looKonto?konto=EE456&jaak=5000

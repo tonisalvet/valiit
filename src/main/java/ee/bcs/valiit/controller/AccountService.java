@@ -17,11 +17,11 @@ public class AccountService {
     //  Map<String, Integer> pangakonto = new HashMap<>();
 
     //loo konto insert
-    public void createAccount(String accountNumber, Integer balance, Integer client_id) {
-        repository.createAccount(accountNumber, balance, client_id);
-        //http://localhost:8080/createAccount?accountNumber=EE357&balance=8500
+    public void createAccount(String accountNumber, Integer balance, Integer client_id, String status) {
+        repository.createAccount(accountNumber, balance, client_id, status);
+        //http://localhost:8080/createAccount?accountNumber=EE357&balance=8500&status=active
         //http://localhost:8080/createAccount?accountNumber=EE123&balance=8500
-        //http://localhost:8080/createAccount?accountNumber=EE123&balance=5500&client_id=11  <- client_id peab olema unikaalne - s.t et kaks korda ühega ei toimi
+        //http://localhost:8080/createAccount?accountNumber=EE123&balance=5500&client_id=11&status=active  <- client_id peab olema unikaalne - s.t et kaks korda ühega ei toimi
     }
 
     public Integer getAccountBalance(String accountNumber) {
@@ -60,6 +60,9 @@ public class AccountService {
         } else {
             System.out.println("Insufficient funds");
         }
+    }
+    public String getStatus(String accountNumber) {
+        return repository.getStatus(accountNumber);
     }
 
 }
