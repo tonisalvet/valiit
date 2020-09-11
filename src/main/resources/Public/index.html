@@ -97,7 +97,7 @@
 
 <input id="getAccountNr"/>
 <button id="nupp5">
-    Vajuta Balance!
+    Get Balance!
 </button>
 <p id="balance"></p>
 
@@ -211,7 +211,7 @@ let button7 = document.getElementById("nupp7");
 button7.addEventListener('click', function () {
 	let accountNrSub = document.getElementById("subFrAccountAccountNr").value;
 	let subBalance = document.getElementById("subBalance").value;
-fetch('http://localhost:8080/withdrawMoney?accountNumber=' + accountNrSub + '&votaRaha=' + subBalance + '', {
+fetch('http://localhost:8080/withdrawMoney?accountNumber=' + accountNrSub + '&amount=' + subBalance + '', {
 				method: 'GET',
 				cache: 'no-cache',
 				headers: {
@@ -231,8 +231,8 @@ fetch('http://localhost:8080/withdrawMoney?accountNumber=' + accountNrSub + '&vo
 
 			let button8 = document.getElementById("nupp8");
 button8.addEventListener('click', function () {
-	let getAccountNr = document.getElementById("getAccountNr").value;
-fetch('http://localhost:8080/getStatus?accountNumber=' + getAccountNr + '', {
+	let getStatus = document.getElementById("getStatus").value;
+fetch('http://localhost:8080/getStatus?accountNumber=' + getStatus + '', {
 				method: 'GET',
 				cache: 'no-cache',
 				headers: {
@@ -240,7 +240,7 @@ fetch('http://localhost:8080/getStatus?accountNumber=' + getAccountNr + '', {
 				}
 				})
 			.then(function(response) {
-				return response.json();
+				return response.text();
 			})
 			.then(function(jsonData) {
 				document.getElementById("status").innerHTML = jsonData;
